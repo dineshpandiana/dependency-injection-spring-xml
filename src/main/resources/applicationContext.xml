@@ -1,0 +1,33 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd 
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd 
+	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd 
+	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.1.xsd">
+
+	<bean id="firstService" class="com.spring.training.service.impl.FirstServiceImpl">
+		<constructor-arg ref="secondService"></constructor-arg>
+	</bean>
+
+	<bean id="secondService" class="com.spring.training.service.impl.SecondServiceImpl">
+		<property name="thirdService" ref="thirdService"></property>
+	</bean>
+
+	<bean id="thirdService" class="com.spring.training.service.impl.ThirdServiceImpl">
+		<constructor-arg ref="fourthService"></constructor-arg>
+		<property name="fifthService" ref="fifthService"></property>
+	</bean>
+
+	<bean id="fourthService" class="com.spring.training.service.impl.FourthServiceImpl">
+	</bean>
+
+	<bean id="fifthService" class="com.spring.training.service.impl.FifthServiceImpl">
+	</bean>
+
+</beans>
+
